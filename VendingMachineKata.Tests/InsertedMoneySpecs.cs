@@ -3,7 +3,7 @@ using Xunit;
 
 namespace VendingMachineKata.Tests
 {
-    public class InsertedMoney
+    public class InsertedMoneySpecs
     {
         [Theory]
         [InlineData("1.00, 0.50", 1.50)]
