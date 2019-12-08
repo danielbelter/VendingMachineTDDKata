@@ -5,13 +5,26 @@ namespace VendingMachineKata.Tests
 {
     public class BuyingSpecs
     {
+        private readonly VendingMachine _sut;
+
         public BuyingSpecs()
         {
             _sut = new VendingMachine();
         }
 
-        private readonly VendingMachine _sut;
-        
+
+        [Fact]
+        public void SoldOutWhenBoughtMoreTHanAvailable()
+        {
+            _sut.InsertMoney("1");
+            _sut.GetCola();
+            
+            _sut.InsertMoney("1");
+            var result = _sut.GetCola();
+
+            result.Should().Contain("Item sould out");
+        }
+
         [Fact]
         public void GetCandy()
         {
@@ -23,17 +36,39 @@ namespace VendingMachineKata.Tests
         }
 
         [Theory]
-        [InlineData("0.50, 0.50", "Candy", "0.25")]
-        [InlineData("1", "Candy", "0.25")]
-        [InlineData("0.50, 0.25, 0.25", "Candy", "0.25")]
-        [InlineData("0.50, 0.50, 0.50", "Candy", "0.75")]
-        public void GetCandyWithChange(string insertedCoins, string expectedProduct, string expectedChange)
+        [InlineData("0.50, 0.50", "0.25")]
+        [InlineData("1", "0.25")]
+        public void GetCandyWithChange(string insertedCoins, string expectedChange)
         {
             _sut.InsertMoney(insertedCoins);
 
             var result = _sut.GetCandy();
 
-            result.Should().ContainAll(expectedProduct, expectedChange);
+            result.Should().ContainAll("Candy", expectedChange);
+        }
+
+        [Theory]
+        [InlineData("0.50, 0.25, 0.25", "0.50")]
+        [InlineData("0.50, 0.50", "0.50")]
+        public void GetChipsWithCHange(string insertedCoins, string expectedChange)
+        {
+            _sut.InsertMoney(insertedCoins);
+
+            var result = _sut.GetChips();
+
+            result.Should().ContainAll("Chips", expectedChange);
+        }
+
+        [Theory]
+        [InlineData("0.50, 0.25, 0.25, 0.25", "0.25")]
+        [InlineData("0.50, 0.50, 0.25", "0.25")]
+        public void GetColaWithChange(string insertedCoins, string expectedChange)
+        {
+            _sut.InsertMoney(insertedCoins);
+
+            var result = _sut.GetCola();
+
+            result.Should().ContainAll("Cola", expectedChange);
         }
 
         [Fact]
@@ -74,16 +109,6 @@ namespace VendingMachineKata.Tests
             var result = _sut.GetCola();
 
             result.Should().Contain("Cola");
-        }
-
-        [Fact]
-        public void GetColaWithChange()
-        {
-            _sut.InsertMoney("1, 0.50");
-
-            var result = _sut.GetCola();
-
-            result.Should().ContainAll("Cola", "0.50");
         }
     }
 }

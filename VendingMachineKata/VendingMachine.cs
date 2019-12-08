@@ -7,15 +7,23 @@ namespace VendingMachineKata
     public class VendingMachine
     {
         private IEnumerable<string> _coins = new List<string>();
+        private decimal _insertedMoneySum;
+        private Dictionary<string, int> _productsQuantity;
 
-        public decimal Sum()
+        public VendingMachine()
         {
-            return _coins.Select(Money.FromString).Sum(value => value.Amount);
+            _productsQuantity = new Dictionary<string, int>
+            {
+                { "Cola", 1 },
+                { "Candy", 1 },
+                { "Chips", 1 }
+            };
         }
 
         public void InsertMoney(string insertedCoins)
         {
-            _coins = insertedCoins.Split(new []{" ", ","}, StringSplitOptions.RemoveEmptyEntries);
+            _coins = insertedCoins.Split(new[] {" ", ","}, StringSplitOptions.RemoveEmptyEntries);
+            _insertedMoneySum = _coins.Select(decimal.Parse).Sum();
         }
 
         public string Return()
@@ -40,15 +48,25 @@ namespace VendingMachineKata
 
         private string GetProductWithChange(decimal price, string product)
         {
-            var insertedMoney = Sum();
-
-            if (insertedMoney > price)
+            if (_productsQuantity[product] == 0)
             {
-                var change = insertedMoney - price;
+                return "Item sould out";
+            }
+
+            if (_insertedMoneySum > price)
+            {
+                var change = _insertedMoneySum - price;
+                _productsQuantity[product]--;
                 return $"{product} with {change.ToString()}";
             }
 
-            return insertedMoney == price ? product : "not enough money";
+            if (_insertedMoneySum == price)
+            {
+                _productsQuantity[product]--;
+                return product;
+            }
+
+            return "not enough money";
         }
     }
 }
