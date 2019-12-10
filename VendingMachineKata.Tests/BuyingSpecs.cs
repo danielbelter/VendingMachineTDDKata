@@ -12,7 +12,6 @@ namespace VendingMachineKata.Tests
             _sut = new VendingMachine();
         }
 
-
         [Fact]
         public void SoldOutWhenBoughtMoreTHanAvailable()
         {

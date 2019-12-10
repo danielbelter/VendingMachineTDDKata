@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineKata", "VendingMachineKata\VendingMachineKata.csproj", "{31363DAD-E2EB-4DD5-AD49-BD45A2EE7729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachineKata", "VendingMachineKata\VendingMachineKata.csproj", "{31363DAD-E2EB-4DD5-AD49-BD45A2EE7729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineKat.Tests", "VendingMachineKata.Tests\VendingMachineKata.Tests.csproj", "{571430E0-5750-4666-BC11-3420AF746AF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachineKata.Tests", "VendingMachineKata.Tests\VendingMachineKata.Tests.csproj", "{571430E0-5750-4666-BC11-3420AF746AF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineKata.PropertyTesting", "VendingMachineKata.PropertyTesting\VendingMachineKata.PropertyTesting.csproj", "{27D04148-07B9-48C7-89EF-54FD0DB77428}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{571430E0-5750-4666-BC11-3420AF746AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571430E0-5750-4666-BC11-3420AF746AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571430E0-5750-4666-BC11-3420AF746AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D04148-07B9-48C7-89EF-54FD0DB77428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D04148-07B9-48C7-89EF-54FD0DB77428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D04148-07B9-48C7-89EF-54FD0DB77428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D04148-07B9-48C7-89EF-54FD0DB77428}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
