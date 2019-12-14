@@ -8,7 +8,7 @@ namespace VendingMachineKata
     {
         private IEnumerable<string> _coins = new List<string>();
         private decimal _insertedMoneySum;
-        private Dictionary<string, int> _productsQuantity;
+        private readonly Dictionary<string, int> _productsQuantity;
 
         public VendingMachine()
         {
