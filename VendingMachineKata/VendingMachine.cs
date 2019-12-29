@@ -14,7 +14,7 @@ namespace VendingMachineKata
         {
             _productsQuantity = new Dictionary<string, int>
             {
-                { "Cola", 1 },
+                { "Cola", 100 },
                 { "Candy", 1 },
                 { "Chips", 1 }
             };
