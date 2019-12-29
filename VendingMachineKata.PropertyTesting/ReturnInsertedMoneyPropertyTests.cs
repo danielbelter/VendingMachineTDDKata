@@ -4,9 +4,9 @@ using FsCheck.Xunit;
 
 namespace VendingMachineKata.PropertyTesting
 {
-    public class PropertyBasedTests
+    public class ReturnInsertedMoneyPropertyTests
     {
-        [Property(Arbitrary = new[] {typeof(Arbitraries)})]
+        [Property(Arbitrary = new[] {typeof(CoinArbitraries)})]
         public Property ReturnInsertedMoney(string coins)
         {
             var sut = new VendingMachine();
@@ -20,7 +20,7 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 
-    public static class Arbitraries
+    internal static class CoinArbitraries
     {
         private static readonly string[] AllowedCoins = {"1", "0.50", "0.25"};
 
