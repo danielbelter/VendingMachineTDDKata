@@ -7,7 +7,7 @@ namespace VendingMachineKata.PropertyTesting
 {
     public class GetProductPropertyTests
     {
-        [Property(Arbitrary = new[] {typeof(ProductArbitraties)})]
+        [Property(Arbitrary = new[] {typeof(LessThan1DollarGenerator)})]
         public Property CantBuyProduct(string coins)
         {
             var sut = new VendingMachine();
@@ -20,7 +20,7 @@ namespace VendingMachineKata.PropertyTesting
             return property.ToProperty();
         }
 
-        [Property(Arbitrary = new[] {typeof(ColaWithoutChange)})]
+        [Property(Arbitrary = new[] {typeof(Exactly1DollarGenerator)})]
         public Property CanBuyProduct(string coins)
         {
             var sut = new VendingMachine();
@@ -33,7 +33,7 @@ namespace VendingMachineKata.PropertyTesting
             return property.ToProperty();
         }
 
-        [Property(Arbitrary = new[] {typeof(ColaWithChange)})]
+        [Property(Arbitrary = new[] {typeof(MoreThan1DollarGenerator)})]
         public Property CanBuyProductWithChange((string coins, string change) coinsWithChange)
         {
             var sut = new VendingMachine();
@@ -49,7 +49,7 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 
-    internal class ProductArbitraties
+    internal class LessThan1DollarGenerator
     {
         private static readonly decimal[] AllowedCoins = {1m, 0.50m, 0.25m};
 
@@ -65,7 +65,7 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 
-    internal class ColaWithoutChange
+    internal class Exactly1DollarGenerator
     {
         private static readonly decimal[] AllowedCoins = {1m, 0.5m, 0.25m};
 
@@ -82,7 +82,7 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 
-    internal class ColaWithChange
+    internal class MoreThan1DollarGenerator
     {
         private static readonly decimal[] AllowedCoins = {1m, 0.5m, 0.25m};
 
