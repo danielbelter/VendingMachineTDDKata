@@ -4,7 +4,7 @@ using FsCheck.Xunit;
 
 namespace VendingMachineKata.PropertyTesting
 {
-    public class ReturnInsertedMoneyPropertyTests
+    public class ReturnMoney
     {
         [Property(Arbitrary = new[] {typeof(CoinArbitraries)})]
         public Property ReturnInsertedMoney(string coins)
@@ -22,7 +22,7 @@ namespace VendingMachineKata.PropertyTesting
 
     internal static class CoinArbitraries
     {
-        private static readonly string[] AllowedCoins = {"1", "0.50", "0.25"};
+        private static readonly decimal[] AllowedCoins = {1m, 0.50m, 0.25m};
 
         public static Arbitrary<string> CoinGenerator()
         {
@@ -33,6 +33,3 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 }
-/*
- * https://www.pluralsight.com/tech-blog/property-based-tdd/
- * */

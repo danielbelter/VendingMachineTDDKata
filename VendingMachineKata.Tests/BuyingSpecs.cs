@@ -15,11 +15,11 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void SoldOutWhenBoughtMoreTHanAvailable()
         {
-            _sut.InsertMoney("1");
-            _sut.GetCola();
+            _sut.InsertMoney("0.75");
+            _sut.GetCandy();
             
-            _sut.InsertMoney("1");
-            var result = _sut.GetCola();
+            _sut.InsertMoney("0.75");
+            var result = _sut.GetCandy();
 
             result.Should().Contain("Item sould out");
         }
