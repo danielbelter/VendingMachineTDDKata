@@ -29,8 +29,7 @@ namespace VendingMachineKata.PropertyTesting
         {
             return Gen.Elements(AllowedCoins)
                 .ListOf()
-                .Select(x => x.Sum())
-                .Where(x => x < 1m)
+                .Where(x => x.Sum() < 1m)
                 .Select(x => 
                     string.Join(", ", x))
                 .ToArbitrary();

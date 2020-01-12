@@ -31,11 +31,9 @@ namespace VendingMachineKata.PropertyTesting
         {
             return Gen.Elements(AllowedCoins)
                 .ListOf()
-                .Select(x => x.Sum() - 1.0m)
-                .Where(x => x > 1.0m)
+                .Where(x => x.Sum() > 1.0m)
                 .Select(x => 
-                    string.Join(", ",x))
-                .Select(x => (x, (decimal.Parse(x) - 1.0m).ToString()))
+                    (string.Join(", ", x), (x.Sum() - 1.0m).ToString()))
                 .ToArbitrary();
         }
     }
