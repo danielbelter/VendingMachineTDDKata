@@ -16,7 +16,8 @@ namespace VendingMachineKata.PropertyTesting
             {
                 sut.InsertMoney(coins);
                 var boughtColaWithChange = sut.GetCola();
-                return boughtColaWithChange.Contains("Cola") && boughtColaWithChange.Contains(change);
+                return boughtColaWithChange.Contains("Cola") 
+                       && boughtColaWithChange.Contains(change);
             };
 
             return property.ToProperty();

@@ -6,7 +6,7 @@ namespace VendingMachineKata.PropertyTesting
 {
     public class ReturnMoney
     {
-        [Property(Arbitrary = new[] {typeof(CoinArbitraries)})]
+        [Property(Arbitrary = new[] {typeof(CoinsGenerator)})]
         public Property ReturnInsertedMoney(string coins)
         {
             var sut = new VendingMachine();
@@ -20,7 +20,7 @@ namespace VendingMachineKata.PropertyTesting
         }
     }
 
-    internal static class CoinArbitraries
+    internal static class CoinsGenerator
     {
         private static readonly decimal[] AllowedCoins = {1m, 0.50m, 0.25m};
 
