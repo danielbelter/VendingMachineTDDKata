@@ -5,21 +5,21 @@ namespace VendingMachineKata.Tests
 {
     public class BuyingSpecs
     {
-        private readonly VendingMachine _sut;
+        private readonly VendingMachine _vendingMachine;
 
         public BuyingSpecs()
         {
-            _sut = new VendingMachine();
+            _vendingMachine = new VendingMachine();
         }
 
         [Fact]
         public void SoldOutWhenBoughtMoreTHanAvailable()
         {
-            _sut.InsertMoney("0.75");
-            _sut.GetCandy();
+            _vendingMachine.InsertMoney("0.75");
+            _vendingMachine.GetCandy();
             
-            _sut.InsertMoney("0.75");
-            var result = _sut.GetCandy();
+            _vendingMachine.InsertMoney("0.75");
+            var result = _vendingMachine.GetCandy();
 
             result.Should().Contain("Item sould out");
         }
@@ -27,9 +27,9 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void GetCandy()
         {
-            _sut.InsertMoney("0.50, 0.25");
+            _vendingMachine.InsertMoney("0.50, 0.25");
 
-            var result = _sut.GetCandy();
+            var result = _vendingMachine.GetCandy();
 
             result.Should().Contain("Candy");
         }
@@ -39,9 +39,9 @@ namespace VendingMachineKata.Tests
         [InlineData("1", "0.25")]
         public void GetCandyWithChange(string insertedCoins, string expectedChange)
         {
-            _sut.InsertMoney(insertedCoins);
+            _vendingMachine.InsertMoney(insertedCoins);
 
-            var result = _sut.GetCandy();
+            var result = _vendingMachine.GetCandy();
 
             result.Should().ContainAll("Candy", expectedChange);
         }
@@ -51,9 +51,9 @@ namespace VendingMachineKata.Tests
         [InlineData("0.50, 0.50", "0.50")]
         public void GetChipsWithCHange(string insertedCoins, string expectedChange)
         {
-            _sut.InsertMoney(insertedCoins);
+            _vendingMachine.InsertMoney(insertedCoins);
 
-            var result = _sut.GetChips();
+            var result = _vendingMachine.GetChips();
 
             result.Should().ContainAll("Chips", expectedChange);
         }
@@ -63,9 +63,9 @@ namespace VendingMachineKata.Tests
         [InlineData("0.50, 0.50, 0.25", "0.25")]
         public void GetColaWithChange(string insertedCoins, string expectedChange)
         {
-            _sut.InsertMoney(insertedCoins);
+            _vendingMachine.InsertMoney(insertedCoins);
 
-            var result = _sut.GetCola();
+            var result = _vendingMachine.GetCola();
 
             result.Should().ContainAll("Cola", expectedChange);
         }
@@ -73,9 +73,9 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void CantBuyWhenNotEnoughMoney()
         {
-            _sut.InsertMoney("0.50");
+            _vendingMachine.InsertMoney("0.50");
 
-            var result = _sut.GetCola();
+            var result = _vendingMachine.GetCola();
 
             result.ToLower().Should().Contain("not enough money");
         }
@@ -83,9 +83,9 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void GetChips()
         {
-            _sut.InsertMoney("0.50");
+            _vendingMachine.InsertMoney("0.50");
 
-            var result = _sut.GetChips();
+            var result = _vendingMachine.GetChips();
 
             result.Should().Contain("Chips");
         }
@@ -93,9 +93,9 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void GetChipsWithChange()
         {
-            _sut.InsertMoney("0.50, 0.25");
+            _vendingMachine.InsertMoney("0.50, 0.25");
 
-            var result = _sut.GetChips();
+            var result = _vendingMachine.GetChips();
 
             result.Should().ContainAll("Chips", "0.25");
         }
@@ -103,9 +103,9 @@ namespace VendingMachineKata.Tests
         [Fact]
         public void GetCola()
         {
-            _sut.InsertMoney("1");
+            _vendingMachine.InsertMoney("1");
 
-            var result = _sut.GetCola();
+            var result = _vendingMachine.GetCola();
 
             result.Should().Contain("Cola");
         }

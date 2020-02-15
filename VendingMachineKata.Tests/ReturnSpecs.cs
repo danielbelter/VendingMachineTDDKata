@@ -14,10 +14,10 @@ namespace VendingMachineKata.Tests
         [InlineData("0.25, 0.25, 0.25, 0.25", "0.25, 0.25, 0.25, 0.25")]
         public void ReturnsAllInsertedCoins(string insertedCoins, string expected)
         {
-            var sut = new VendingMachine();
-            sut.InsertMoney(insertedCoins);
+            var vendingMachine = new VendingMachine();
+            vendingMachine.InsertMoney(insertedCoins);
 
-            var returnedCoins = sut.Return();
+            var returnedCoins = vendingMachine.Return();
 
             returnedCoins.Should().Be(expected);
         }
