@@ -71,7 +71,7 @@ namespace VendingMachineKata.Tests
         }
 
         [Fact]
-        public void CantBuyWhenNotEnoughMoney()
+        public void CantBuyColaWhenNotEnoughMoney()
         {
             _vendingMachine.InsertMoney("0.50");
 
@@ -88,16 +88,6 @@ namespace VendingMachineKata.Tests
             var result = _vendingMachine.GetChips();
 
             result.Should().Contain("Chips");
-        }
-
-        [Fact]
-        public void GetChipsWithChange()
-        {
-            _vendingMachine.InsertMoney("0.50, 0.25");
-
-            var result = _vendingMachine.GetChips();
-
-            result.Should().ContainAll("Chips", "0.25");
         }
 
         [Fact]

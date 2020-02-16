@@ -57,17 +57,17 @@ namespace VendingMachineKata
                 return "Item sould out";
             }
 
+            if (_insertedMoneySum == price)
+            {
+                _productsQuantity[product]--;
+                return product;
+            }
+
             if (_insertedMoneySum > price)
             {
                 var change = _insertedMoneySum - price;
                 _productsQuantity[product]--;
                 return $"{product} with {change.ToString()}";
-            }
-
-            if (_insertedMoneySum == price)
-            {
-                _productsQuantity[product]--;
-                return product;
             }
 
             return "not enough money";
