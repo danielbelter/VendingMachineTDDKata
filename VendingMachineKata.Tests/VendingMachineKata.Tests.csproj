@@ -19,4 +19,16 @@
     <ProjectReference Include="..\VendingMachineKata\VendingMachineKata.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="StrykerOutput\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="StrykerOutput\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="StrykerOutput\**" />
+  </ItemGroup>
+
 </Project>
