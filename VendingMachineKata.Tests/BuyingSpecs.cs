@@ -26,9 +26,7 @@ namespace VendingMachineKata.Tests
             var subject = new VendingMachine();
 
             subject.InsertMoney("1");
-
             subject.GetCola();
-
             subject.InsertMoney("1");
 
             var result = subject.GetCola();
