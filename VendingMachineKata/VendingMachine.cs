@@ -8,23 +8,6 @@ namespace VendingMachineKata
     {
         private ICollection<decimal> _coins = new List<decimal>();
         private decimal _insertedMoneySum;
-        private readonly Dictionary<string, int> _productsQuantity;
-
-        public VendingMachine()
-        {
-            _productsQuantity = new Dictionary<string, int>
-            {
-                {
-                    "Cola", 1
-                },
-                {
-                    "Candy", 1
-                },
-                {
-                    "Chips", 1
-                }
-            };
-        }
 
         public void InsertMoney(string insertedCoins)
         {
@@ -58,20 +41,13 @@ namespace VendingMachineKata
 
         private string GetProductWithChange(decimal price, string product)
         {
-            if (_productsQuantity[product] == 0)
-            {
-                return "item sold out";
-            }
-            
             if (_insertedMoneySum == price)
             {
-                _productsQuantity[product]--;
                 return product;
             }
 
             if (_insertedMoneySum > price)
             {
-                _productsQuantity[product]--;
                 var change = _insertedMoneySum - price;
                 return $"{product} with {change.ToString()}";
             }
