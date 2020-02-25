@@ -7,9 +7,9 @@ namespace BDDTests
 {
     namespace BuyingProduct
     {
-        public class ColaWithWithChange : GivenSubject<VendingMachine, string>
+        public class ColaWithChange : GivenSubject<VendingMachine, string>
         {
-            public ColaWithWithChange()
+            public ColaWithChange()
             {
                 Given(() => Subject.InsertMoney("1, 0.50"));
                 When(() => Subject.GetCola());
