@@ -12,6 +12,18 @@ namespace VendingMachineKata.Tests
             _vendingMachine = new VendingMachine();
         }
 
+        [Fact]
+        public void BuyMultipleProductsWhenInsertedEnoughMoney()
+        {
+            _vendingMachine.InsertMoney("1");
+            _vendingMachine.GetCola();
+            _vendingMachine.InsertMoney("1");
+
+            var result = _vendingMachine.GetCola();
+
+            result.Should().Contain("Cola");
+        }
+        
         [Theory]
         [InlineData("1", "Cola")]
         [InlineData("0.5, 0.5", "Cola")]
@@ -89,18 +101,6 @@ namespace VendingMachineKata.Tests
             var result = _vendingMachine.GetCola();
 
             result.ToLower().Should().Contain("not enough money");
-        }
-
-        [Fact]
-        public void BuyMultipleProductsWhenInsertedEnoughMoney()
-        {
-            _vendingMachine.InsertMoney("1");
-            _vendingMachine.GetCola();
-            _vendingMachine.InsertMoney("1");
-
-            var result = _vendingMachine.GetCola();
-
-            result.Should().Contain("Cola");
         }
     }
 }
