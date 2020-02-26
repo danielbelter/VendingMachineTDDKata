@@ -9,10 +9,6 @@ namespace VendingMachineKata
         private ICollection<decimal> _coins = new List<decimal>();
         private decimal _insertedMoneySum;
 
-        public VendingMachine()
-        {
-        }
-
         public void InsertMoney(string insertedCoins)
         {
             _coins = insertedCoins
